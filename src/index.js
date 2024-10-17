@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { Client, IntentsBitField, EmbedBuilder, ActivityType } = require("discord.js");
+const eventHandler = require("./handlers/eventHandler");
 
 const client = new Client({
   intents: [
@@ -23,7 +24,9 @@ let status = [
 
 
 client.on("ready", (c) => {
-  console.log(`${c.user.tag} is online. `);
+  //console.log(`${c.user.tag} is online. `);
+  eventHandler(client);
+
 
   setInterval(() => {
     let random = Math.floor(Math.random() * status.length);
