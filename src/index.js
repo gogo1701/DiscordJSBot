@@ -1,5 +1,10 @@
 require("dotenv").config();
-const { Client, IntentsBitField, EmbedBuilder, ActivityType } = require("discord.js");
+const {
+  Client,
+  IntentsBitField,
+  EmbedBuilder,
+  ActivityType,
+} = require("discord.js");
 const eventHandler = require("./handlers/eventHandler");
 
 const client = new Client({
@@ -13,20 +18,18 @@ const client = new Client({
 
 let status = [
   {
-    name: 'Learning Lua',
-    type: ActivityType.Watching
+    name: "Learning Lua",
+    type: ActivityType.Watching,
   },
   {
-    name: 'Learning Unreal Engine',
-    type: ActivityType.Watching
+    name: "Learning Unreal Engine",
+    type: ActivityType.Watching,
   },
-]
-
+];
 
 client.on("ready", (c) => {
   //console.log(`${c.user.tag} is online. `);
   eventHandler(client);
-
 
   setInterval(() => {
     let random = Math.floor(Math.random() * status.length);
